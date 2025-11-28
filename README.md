@@ -1,7 +1,7 @@
 
 # Full Installation Guide: Ubuntu Server + XFCE + ROS + Savya SR-L6 Arm
 
-*(With Embedded Official Links and Detailed Explanations)*
+<!-- *(With Embedded Official Links and Detailed Explanations)* -->
 
 ------------------------------------------------------------------------
 
@@ -47,7 +47,7 @@ sudo dd if=ubuntu-server.iso of=/dev/sdX status=progress
 
 ---
 
-🟦 2. Install Ubuntu Server
+# 🟦 2. Install Ubuntu Server
 
 · Choose English - Select English as the installation language
 · Connect WiFi/Ethernet - Ensure internet connection for package downloads
@@ -56,7 +56,7 @@ sudo dd if=ubuntu-server.iso of=/dev/sdX status=progress
 
 ---
 
-🟦 3. Update System
+# 🟦 3. Update System
 
 ```bash
 # Update package list from repositories
@@ -69,7 +69,7 @@ sudo apt upgrade -y
 
 ---
 
-🟦 4. Install XFCE Lightweight GUI
+# 🟦 4. Install XFCE Lightweight GUI
 
 ```bash
 # Install XFCE desktop environment and additional useful components
@@ -82,11 +82,11 @@ sudo apt install lightdm -y
 sudo reboot
 ```
 
-Note: After reboot, you'll see a graphical login screen instead of the command line.
+> Note: After reboot, you'll see a graphical login screen instead of the command line.
 
 ---
 
-🟦 5. Install Real-time Kernel (Optional but Recommended for Robotics)
+# 🟦 5. Install Real-time Kernel (Optional but Recommended for Robotics)
 
 ```bash
 # Install the Linux real-time kernel for improved timing precision
@@ -106,9 +106,9 @@ uname -r
 
 ---
 
-🟦 6. Install ROS Noetic
+# 🟦 6. Install ROS Noetic
 
-Add ROS Repository
+### `Add ROS Repository`
 
 ```bash
 # Add ROS package repository to system's software sources
@@ -116,7 +116,7 @@ Add ROS Repository
 sudo sh -c "echo 'deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main' > /etc/apt/sources.list.d/ros-latest.list"
 ```
 
-Add Keys
+### `Add Keys`
 
 ```bash
 # Install curl if not already installed (for downloading files)
@@ -126,7 +126,7 @@ sudo apt install curl -y
 curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 ```
 
-Install ROS
+### `Install ROS`
 
 ```bash
 # Update package list to include new ROS repository
@@ -138,7 +138,7 @@ sudo apt install ros-noetic-desktop-full -y
 
 ---
 
-🟦 7. Initialize rosdep
+# 🟦 7. Initialize rosdep
 
 ```bash
 # Initialize rosdep (ROS dependency management tool)
@@ -151,7 +151,7 @@ rosdep update
 
 ---
 
-🟦 8. Add ROS to .bashrc
+# 🟦 8. Add ROS to .bashrc
 
 ```bash
 # Add ROS environment setup to bashrc so it loads automatically on terminal startup
@@ -165,7 +165,7 @@ Explanation: The .bashrc file runs every time you open a new terminal, ensuring 
 
 ---
 
-🟦 9. Create Catkin Workspace
+# 🟦 9. Create Catkin Workspace
 
 ```bash
 # Create catkin workspace directory structure
@@ -187,7 +187,7 @@ source ~/.bashrc
 
 ---
 
-🟦 10. Install Savya SR-L6 ROS Driver
+# 🟦 10. Install Savya SR-L6 ROS Driver
 
 ```bash
 # Navigate to source directory of catkin workspace
@@ -203,7 +203,7 @@ catkin_make
 
 ---
 
-🟦 11. Install Required ROS Packages
+# 🟦 11. Install Required ROS Packages
 
 ```bash
 # Install additional ROS packages needed for robot control:
@@ -217,7 +217,7 @@ sudo apt install ros-noetic-ros-control ros-noetic-ros-controllers ros-noetic-in
 
 ---
 
-🟦 12. Launch Robot Driver
+# 🟦 12. Launch Robot Driver
 
 ```bash
 # Launch the SR-L6 robot driver
@@ -227,9 +227,9 @@ roslaunch sr_l6_driver bringup.launch
 
 ---
 
-🟦 13. Basic Robot Commands
+# 🟦 13. Basic Robot Commands
 
-Enable Robot
+### `Enable Robot`
 
 ```bash
 # Send service call to enable robot motors and control
@@ -237,7 +237,7 @@ Enable Robot
 rosservice call /sr_l6/enableRobot
 ```
 
-Disable Robot
+### `Disable Robot`
 
 ```bash
 # Send service call to disable robot motors
@@ -245,7 +245,7 @@ Disable Robot
 rosservice call /sr_l6/disableRobot
 ```
 
-Read Joint States
+### `Read Joint States`
 
 ```bash
 # Display real-time joint position, velocity, and effort data
@@ -253,7 +253,7 @@ Read Joint States
 rostopic echo /sr_l6/joint_states
 ```
 
-Publish Joint Command
+### `Publish Joint Command`
 
 ```bash
 # Send joint position commands to the robot
@@ -264,17 +264,17 @@ rostopic pub /sr_l6/joint_cmd std_msgs/Float64MultiArray "data: [0.1, 0.5, -0.3,
 
 ---
 
-🟦 Useful ROS Documentation Links
+# 🟦 Useful ROS Documentation Links
 
-ROS Tutorials
+# ROS Tutorials
 
 👉 http://wiki.ros.org/ROS/Tutorials
 
-MoveIt Motion Planning
+# MoveIt Motion Planning
 
 👉 https://moveit.ros.org/
 
-RViz Visualization
+# RViz Visualization
 
 👉 http://wiki.ros.org/rviz
 
@@ -291,5 +291,4 @@ You now have a complete Ubuntu Server system with:
 · Essential ROS packages including MoveIt for motion planning and RViz for visualization
 
 The system is ready for developing and running robotics applications with the SR-L6 robotic arm.
-
 ```
