@@ -1,4 +1,3 @@
-
 # Full Installation Guide: Ubuntu Server + XFCE + ROS + Savya SR-L6 Arm
 
 <!-- *(With Embedded Official Links and Detailed Explanations)* -->
@@ -42,8 +41,8 @@
 # status=progress: shows the copy progress
 sudo dd if=ubuntu-server.iso of=/dev/sdX status=progress
 ```
-
-⚠️ Warning: Make sure you use the correct USB device (/dev/sdX) as this will erase all data on that device.
+> **⚠️ Warning:**
+> Make sure you use the correct USB device (/dev/sdX) as this will erase all data on that device.
 
 ---
 
